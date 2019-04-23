@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.MproductMapper" >
+  <resultMap id="BaseResultMap" type="model.Mproduct" >
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="pstorage" property="pstorage" jdbcType="BIGINT" />
+    <result column="psaled" property="psaled" jdbcType="BIGINT" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="rate" property="rate" jdbcType="REAL" />
+    <result column="predict" property="predict" jdbcType="BIGINT" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, pname, pstorage, psaled, price, rate, predict, place
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="model.MproductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mproduct
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from mproduct
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from mproduct
+    where pid = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="model.MproductExample" >
+    delete from mproduct
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="model.Mproduct" >
+    insert into mproduct (pid, pname, pstorage, 
+      psaled, price, rate, predict, 
+      place)
+    values (#{pid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, #{pstorage,jdbcType=BIGINT}, 
+      #{psaled,jdbcType=BIGINT}, #{price,jdbcType=REAL}, #{rate,jdbcType=REAL}, #{predict,jdbcType=BIGINT}, 
+      #{place,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Mproduct" >
+    insert into mproduct
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="pstorage != null" >
+        pstorage,
+      </if>
+      <if test="psaled != null" >
+        psaled,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="predict != null" >
+        predict,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pstorage != null" >
+        #{pstorage,jdbcType=BIGINT},
+      </if>
+      <if test="psaled != null" >
+        #{psaled,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=REAL},
+      </if>
+      <if test="predict != null" >
+        #{predict,jdbcType=BIGINT},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="model.MproductExample" resultType="java.lang.Integer" >
+    select count(*) from mproduct
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mproduct
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pname != null" >
+        pname = #{record.pname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstorage != null" >
+        pstorage = #{record.pstorage,jdbcType=BIGINT},
+      </if>
+      <if test="record.psaled != null" >
+        psaled = #{record.psaled,jdbcType=BIGINT},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.rate != null" >
+        rate = #{record.rate,jdbcType=REAL},
+      </if>
+      <if test="record.predict != null" >
+        predict = #{record.predict,jdbcType=BIGINT},
+      </if>
+      <if test="record.place != null" >
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mproduct
+    set pid = #{record.pid,jdbcType=VARCHAR},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      pstorage = #{record.pstorage,jdbcType=BIGINT},
+      psaled = #{record.psaled,jdbcType=BIGINT},
+      price = #{record.price,jdbcType=REAL},
+      rate = #{record.rate,jdbcType=REAL},
+      predict = #{record.predict,jdbcType=BIGINT},
+      place = #{record.place,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Mproduct" >
+    update mproduct
+    <set >
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pstorage != null" >
+        pstorage = #{pstorage,jdbcType=BIGINT},
+      </if>
+      <if test="psaled != null" >
+        psaled = #{psaled,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=REAL},
+      </if>
+      <if test="predict != null" >
+        predict = #{predict,jdbcType=BIGINT},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Mproduct" >
+    update mproduct
+    set pname = #{pname,jdbcType=VARCHAR},
+      pstorage = #{pstorage,jdbcType=BIGINT},
+      psaled = #{psaled,jdbcType=BIGINT},
+      price = #{price,jdbcType=REAL},
+      rate = #{rate,jdbcType=REAL},
+      predict = #{predict,jdbcType=BIGINT},
+      place = #{place,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>
