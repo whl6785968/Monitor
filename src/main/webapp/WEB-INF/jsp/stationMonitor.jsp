@@ -68,8 +68,16 @@
 								</td>
 							</tr>
 							<tr>
+								<td>
+									水质质量:
+								</td>
+								<td>
+									${i.slevel}
+								</td>
+							</tr>
+							<tr>
 								<td align="center" colspan="2">
-									<button class="layui-btn layui-btn-normal layui-btn-sm">查看详情</button>
+									<a href="javascript:openDetatil(${i.sid})" class="layui-btn layui-btn-normal layui-btn-sm">查看详情</a>
 								</td>
 								
 							</tr>
@@ -86,19 +94,24 @@
 			var point = new BMap.Point(118.844765, 32.065069);
 			map.centerAndZoom(point, 10); // 编写自定义函数，创建标注 
 			map.enableScrollWheelZoom(true);
-			/*var icon = new BMap.Icon("markers.png",new BMap.Size(23,25),{
-			});*/
+			map.addControl(new BMap.NavigationControl());
+			map.addControl(new BMap.GeolocationControl());
+			map.addControl(new BMap.OverviewMapControl());
+			map.addControl(new BMap.MapTypeControl());
+			//http://developer.baidu.com/map/jsdemo/img/fox.gif
+		
+			
 			var longtitude=[];
 			var latitude = [];
 			var sid = [];
 			var loca =[];
 			var markPoints = [];
-			
+			var slevel = [];
 			<c:forEach items="${info}" var="i" varStatus="status">
 				longtitude.push(${i.longtitude});
 				latitude.push(${i.latitude});
 				loca.push("${i.location}");
-				
+				slevel.push(Math.floor(${i.slevel}));
 				/* markPoints.push(
 	            		{
 	            			y:${i.longtitude},
@@ -120,15 +133,15 @@
             			x:latitude[i],
             			title:loca[i],
             			con:sids[i],
-            			branch:i
+            			branch:slevel[i]
             		}		
             	)
             } 
-            alert(JSON.stringify(markPoints));
+         /*    alert(JSON.stringify(markPoints)); */
              var marker = new BMap.Marker(point);
             map.addOverlay(marker);
-            function markFun(points,label,infoWindows){
-            	var markers = new BMap.Marker(points);
+            function markFun(points,label,icon,infoWindows){
+            	var markers = new BMap.Marker(points,{icon:myIcon});
             	map.addOverlay(markers);
             	markers.setLabel(label);
             	markers.addEventListener("click",function(event){
@@ -142,12 +155,70 @@
 				var label = new BMap.Label(markPoints[j].branch,{
 	                    offset:new BMap.Size(25,5)
 	                });
+				if(markPoints[j].branch==1)
+				{
+					var myIcon = new BMap.Icon("/imgs/mark2.png",new BMap.Size(35,40),
+							{
+							   anchor: new BMap.Size(10, 15),   
+							}
+						);
+				}
+				if(markPoints[j].branch==2)
+				{
+					var myIcon = new BMap.Icon("/imgs/mark3.png",new BMap.Size(35,40),
+							{
+							   anchor: new BMap.Size(10, 15),   
+							}
+						);
+				}
+				if(markPoints[j].branch==3)
+				{
+					var myIcon = new BMap.Icon("/imgs/mark4.png",new BMap.Size(35,40),
+							{
+							   anchor: new BMap.Size(10, 15),   
+							}
+						);
+				}
+				if(markPoints[j].branch==4)
+				{
+					var myIcon = new BMap.Icon("/imgs/mark5.png",new BMap.Size(35,40),
+							{
+							   anchor: new BMap.Size(10, 15),   
+							}
+						);
+				}
+					
 				var info = new BMap.InfoWindow(markPoints[j].con,
 						{
 							width:200,
-							height:200,
+							height:250,
 						});
-				markFun(point,label,info);
+				markFun(point,label,myIcon,info);
+			};
+			
+			
+			function openDetatil(sid){
+				layui.use(['layer','jquery'],function(){
+					var layer = layui.layer,
+					$$ = layui.jquery;
+			/* 		var eid = $$("#equipId").val(); */
+					$$(window).one("resize",function(){
+						var index = layer.open({
+							title :'站点详情',
+							type:2,
+							maxmin: true,
+							resize:true,
+							skin: 'layui-layer-rim', 
+							area: ['1500px', '850px'],
+							content:'/showStationQuality?sid='+sid,
+							success:function(){
+								 layer.tips('按x返回', '.layui-layer-setwin .layui-layer-close',{tips:1});
+							}
+						})
+						layer.full(index);
+					}).resize();
+					
+				})
 			}
 		
 		</script>

@@ -136,7 +136,8 @@ public class MLogController {
 		System.out.println(userRecord);
 		if(userRecord!=null)
 		{
-			if(userRecord.getRecommend().equals("") || userRecord.getRecommend()==null)
+			System.out.println(userRecord.getRecommend());
+			if(userRecord.getRecommend()==null || userRecord.getRecommend().equals(""))
 			{
 				List<Equipment> list = this.getRecommendEquip(request);
 				Random r = new Random();

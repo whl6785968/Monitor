@@ -173,7 +173,7 @@ a cite {
 }
 </style>
 
-<body class="childrenBody" onload="someDetail()">
+<body class="childrenBody">
 	<div class="layui-fluid">
 		<div class="layui-row layui-col-space15">
 			<div class="layui-col-md8">

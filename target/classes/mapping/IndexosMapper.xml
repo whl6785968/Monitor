@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.IndexosMapper" >
+  <resultMap id="BaseResultMap" type="model.Indexos" >
+    <result column="iid" property="iid" jdbcType="VARCHAR" />
+    <result column="itime" property="itime" jdbcType="TIMESTAMP" />
+    <result column="tss" property="tss" jdbcType="REAL" />
+    <result column="cod" property="cod" jdbcType="REAL" />
+    <result column="tn" property="tn" jdbcType="REAL" />
+    <result column="tp" property="tp" jdbcType="REAL" />
+    <result column="dissolve" property="dissolve" jdbcType="REAL" />
+    <result column="ph" property="ph" jdbcType="REAL" />
+    <result column="temper" property="temper" jdbcType="REAL" />
+    <result column="nhn" property="nhn" jdbcType="REAL" />
+    <result column="conductivity" property="conductivity" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    iid, itime, tss, cod, tn, tp, dissolve, ph, temper, nhn, conductivity
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="model.IndexosExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from indexos
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="model.IndexosExample" >
+    delete from indexos
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="model.Indexos" >
+    insert into indexos (iid, itime, tss, 
+      cod, tn, tp, dissolve, 
+      ph, temper, nhn, conductivity
+      )
+    values (#{iid,jdbcType=VARCHAR}, #{itime,jdbcType=TIMESTAMP}, #{tss,jdbcType=REAL}, 
+      #{cod,jdbcType=REAL}, #{tn,jdbcType=REAL}, #{tp,jdbcType=REAL}, #{dissolve,jdbcType=REAL}, 
+      #{ph,jdbcType=REAL}, #{temper,jdbcType=REAL}, #{nhn,jdbcType=REAL}, #{conductivity,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.Indexos" >
+    insert into indexos
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iid != null" >
+        iid,
+      </if>
+      <if test="itime != null" >
+        itime,
+      </if>
+      <if test="tss != null" >
+        tss,
+      </if>
+      <if test="cod != null" >
+        cod,
+      </if>
+      <if test="tn != null" >
+        tn,
+      </if>
+      <if test="tp != null" >
+        tp,
+      </if>
+      <if test="dissolve != null" >
+        dissolve,
+      </if>
+      <if test="ph != null" >
+        ph,
+      </if>
+      <if test="temper != null" >
+        temper,
+      </if>
+      <if test="nhn != null" >
+        nhn,
+      </if>
+      <if test="conductivity != null" >
+        conductivity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iid != null" >
+        #{iid,jdbcType=VARCHAR},
+      </if>
+      <if test="itime != null" >
+        #{itime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tss != null" >
+        #{tss,jdbcType=REAL},
+      </if>
+      <if test="cod != null" >
+        #{cod,jdbcType=REAL},
+      </if>
+      <if test="tn != null" >
+        #{tn,jdbcType=REAL},
+      </if>
+      <if test="tp != null" >
+        #{tp,jdbcType=REAL},
+      </if>
+      <if test="dissolve != null" >
+        #{dissolve,jdbcType=REAL},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=REAL},
+      </if>
+      <if test="temper != null" >
+        #{temper,jdbcType=REAL},
+      </if>
+      <if test="nhn != null" >
+        #{nhn,jdbcType=REAL},
+      </if>
+      <if test="conductivity != null" >
+        #{conductivity,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="model.IndexosExample" resultType="java.lang.Integer" >
+    select count(*) from indexos
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update indexos
+    <set >
+      <if test="record.iid != null" >
+        iid = #{record.iid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itime != null" >
+        itime = #{record.itime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tss != null" >
+        tss = #{record.tss,jdbcType=REAL},
+      </if>
+      <if test="record.cod != null" >
+        cod = #{record.cod,jdbcType=REAL},
+      </if>
+      <if test="record.tn != null" >
+        tn = #{record.tn,jdbcType=REAL},
+      </if>
+      <if test="record.tp != null" >
+        tp = #{record.tp,jdbcType=REAL},
+      </if>
+      <if test="record.dissolve != null" >
+        dissolve = #{record.dissolve,jdbcType=REAL},
+      </if>
+      <if test="record.ph != null" >
+        ph = #{record.ph,jdbcType=REAL},
+      </if>
+      <if test="record.temper != null" >
+        temper = #{record.temper,jdbcType=REAL},
+      </if>
+      <if test="record.nhn != null" >
+        nhn = #{record.nhn,jdbcType=REAL},
+      </if>
+      <if test="record.conductivity != null" >
+        conductivity = #{record.conductivity,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update indexos
+    set iid = #{record.iid,jdbcType=VARCHAR},
+      itime = #{record.itime,jdbcType=TIMESTAMP},
+      tss = #{record.tss,jdbcType=REAL},
+      cod = #{record.cod,jdbcType=REAL},
+      tn = #{record.tn,jdbcType=REAL},
+      tp = #{record.tp,jdbcType=REAL},
+      dissolve = #{record.dissolve,jdbcType=REAL},
+      ph = #{record.ph,jdbcType=REAL},
+      temper = #{record.temper,jdbcType=REAL},
+      nhn = #{record.nhn,jdbcType=REAL},
+      conductivity = #{record.conductivity,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

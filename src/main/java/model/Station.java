@@ -7,6 +7,8 @@ public class Station {
 
     private String location;
 
+    private Integer slevel;
+
     private Float longtitude;
 
     private Float latitude;
@@ -33,6 +35,14 @@ public class Station {
 
     public void setLocation(String location) {
         this.location = location == null ? null : location.trim();
+    }
+
+    public Integer getSlevel() {
+        return slevel;
+    }
+
+    public void setSlevel(Integer slevel) {
+        this.slevel = slevel;
     }
 
     public Float getLongtitude() {

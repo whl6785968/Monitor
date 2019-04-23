@@ -7,9 +7,11 @@ service\impl\EquipmentServiceImpl$1.class
 service\impl\MuserServiceImpl.class
 model\StationExample$Criterion.class
 model\UserrecordExample$Criterion.class
+service\IndexosService.class
 com\sandalen\CF\GetSimilarity$1.class
 com\sandalen\redis\JedisClientPool.class
 testM\Tredis.class
+service\impl\IndexosServiceImpl.class
 com\sandalen\CF\GetSimilarity$12.class
 model\MuserExample$Criteria.class
 service\impl\MproductServiceImpl.class
@@ -33,6 +35,7 @@ service\impl\UserServiceImpl.class
 controller\MuserController.class
 com\sandalen\CF\GetSimilarity$13.class
 com\sandalen\CF\GetSimilarity$9.class
+dao\IndexosMapper.class
 model\StationExample$Criteria.class
 dao\BoardManagerMapper.class
 dao\MuserMapper.class
@@ -56,6 +59,7 @@ com\sandalen\CF\GetRecommend$2.class
 service\MproductService.class
 controller\DataScrollController$tThread.class
 model\MproductExample.class
+model\Indexos.class
 dao\LoginLogMapper.class
 model\TestData.class
 service\impl\SearchItemServiceImpl.class
@@ -63,6 +67,7 @@ model\EquipmentExample$Criteria.class
 service\TopicService.class
 model\LoginLog.class
 controller\DataAndChartController$SqlQuery.class
+model\IndexosExample$Criterion.class
 dao\DtMapper.class
 com\sandalen\CF\GetRecommend$3.class
 controller\SearchItemController.class
@@ -80,6 +85,7 @@ com\sandalen\CF\UserData.class
 service\impl\EquipmentServiceImpl.class
 service\PageService.class
 com\sandalen\CF\GetCommoUse.class
+model\IndexosExample.class
 model\DtExample$Criteria.class
 com\sandalen\CF\GetSimilarity$5.class
 service\impl\EquipmentServiceImpl$2.class
@@ -100,6 +106,7 @@ service\impl\UserRecordServiceImpl.class
 com\sandalen\CF\GetSimilarity$6.class
 model\EquipmentExample$Criterion.class
 service\UserService.class
+model\IndexosExample$Criteria.class
 controller\MainController.class
 com\sandalen\CF\GetSimilarity$10.class
 dao\TopicMapper.class
@@ -131,6 +138,7 @@ dao\MproductMapper.class
 com\sandalen\CF\CfByJava.class
 controller\EquipmentController.class
 dao\EquipmentMapper.class
+model\IndexosExample$GeneratedCriteria.class
 com\sandalen\CF\RecommendItem.class
 dao\UserDetailedMapper.class
 model\MuserExample$GeneratedCriteria.class

@@ -5,6 +5,7 @@
     <id column="sid" property="sid" jdbcType="VARCHAR" />
     <result column="charge" property="charge" jdbcType="VARCHAR" />
     <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="slevel" property="slevel" jdbcType="INTEGER" />
     <result column="longtitude" property="longtitude" jdbcType="REAL" />
     <result column="latitude" property="latitude" jdbcType="REAL" />
   </resultMap>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    sid, charge, location, longtitude, latitude
+    sid, charge, location, slevel, longtitude, latitude
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="model.StationExample" >
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="model.Station" >
     insert into station (sid, charge, location, 
-      longtitude, latitude)
+      slevel, longtitude, latitude
+      )
     values (#{sid,jdbcType=VARCHAR}, #{charge,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
-      #{longtitude,jdbcType=REAL}, #{latitude,jdbcType=REAL})
+      #{slevel,jdbcType=INTEGER}, #{longtitude,jdbcType=REAL}, #{latitude,jdbcType=REAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="model.Station" >
     insert into station
@@ -116,6 +119,9 @@
       </if>
       <if test="location != null" >
         location,
+      </if>
+      <if test="slevel != null" >
+        slevel,
       </if>
       <if test="longtitude != null" >
         longtitude,
@@ -133,6 +139,9 @@
       </if>
       <if test="location != null" >
         #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="slevel != null" >
+        #{slevel,jdbcType=INTEGER},
       </if>
       <if test="longtitude != null" >
         #{longtitude,jdbcType=REAL},
@@ -160,6 +169,9 @@
       <if test="record.location != null" >
         location = #{record.location,jdbcType=VARCHAR},
       </if>
+      <if test="record.slevel != null" >
+        slevel = #{record.slevel,jdbcType=INTEGER},
+      </if>
       <if test="record.longtitude != null" >
         longtitude = #{record.longtitude,jdbcType=REAL},
       </if>
@@ -176,6 +188,7 @@
     set sid = #{record.sid,jdbcType=VARCHAR},
       charge = #{record.charge,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
+      slevel = #{record.slevel,jdbcType=INTEGER},
       longtitude = #{record.longtitude,jdbcType=REAL},
       latitude = #{record.latitude,jdbcType=REAL}
     <if test="_parameter != null" >
@@ -191,6 +204,9 @@
       <if test="location != null" >
         location = #{location,jdbcType=VARCHAR},
       </if>
+      <if test="slevel != null" >
+        slevel = #{slevel,jdbcType=INTEGER},
+      </if>
       <if test="longtitude != null" >
         longtitude = #{longtitude,jdbcType=REAL},
       </if>
@@ -204,6 +220,7 @@
     update station
     set charge = #{charge,jdbcType=VARCHAR},
       location = #{location,jdbcType=VARCHAR},
+      slevel = #{slevel,jdbcType=INTEGER},
       longtitude = #{longtitude,jdbcType=REAL},
       latitude = #{latitude,jdbcType=REAL}
     where sid = #{sid,jdbcType=VARCHAR}

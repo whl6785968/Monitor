@@ -314,6 +314,66 @@ public class StationExample {
             return (Criteria) this;
         }
 
+        public Criteria andSlevelIsNull() {
+            addCriterion("slevel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelIsNotNull() {
+            addCriterion("slevel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelEqualTo(Integer value) {
+            addCriterion("slevel =", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelNotEqualTo(Integer value) {
+            addCriterion("slevel <>", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelGreaterThan(Integer value) {
+            addCriterion("slevel >", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("slevel >=", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelLessThan(Integer value) {
+            addCriterion("slevel <", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelLessThanOrEqualTo(Integer value) {
+            addCriterion("slevel <=", value, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelIn(List<Integer> values) {
+            addCriterion("slevel in", values, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelNotIn(List<Integer> values) {
+            addCriterion("slevel not in", values, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelBetween(Integer value1, Integer value2) {
+            addCriterion("slevel between", value1, value2, "slevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andSlevelNotBetween(Integer value1, Integer value2) {
+            addCriterion("slevel not between", value1, value2, "slevel");
+            return (Criteria) this;
+        }
+
         public Criteria andLongtitudeIsNull() {
             addCriterion("longtitude is null");
             return (Criteria) this;

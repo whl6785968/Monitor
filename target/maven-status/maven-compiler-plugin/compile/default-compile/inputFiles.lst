@@ -12,6 +12,7 @@ C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\Station.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\UserRecordService.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\MuserController.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\ResultMap.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\IndexosMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\MapServiceImpl.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\TopicServiceImpl.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\util\UploadPictureUtil.java
@@ -53,6 +54,7 @@ C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\EquipmentContro
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\EquipmentService.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\UserController.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\BoardManagerKey.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\IndexosServiceImpl.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\UserrecordExample.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\Dtest.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\EquipmentServiceImpl.java
@@ -67,6 +69,8 @@ C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\MproductServi
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\UserDetailed.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\testM\Tredis.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\com\sandalen\redis\JedisClient.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\IndexosService.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\Indexos.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\EquipmentMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\MuserMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\RemoteDataController.java
@@ -84,6 +88,7 @@ C:\Users\dell\eclipse-workspace\Monitor\src\main\java\interceptor\LoginIntercept
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\RecentUser.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\com\sandalen\CF\UserData.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\Dt.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\IndexosExample.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\UserrecordMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\Mproduct.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\MainController.java
