@@ -20,7 +20,28 @@
 			}
 			
 			#container {
-				height: 100%
+				height: 100%;
+				width:100%;
+				postion:relative;
+			
+			}
+			#lis{
+				height:100%;
+				width:20%;
+				postion:relative
+			}
+			
+		/* 	#lis{
+				 postion:absolute;
+				 height:300px;
+				 width:300px;
+				 top:80px;
+				 border:1px black solid;
+				 background-color:darkorange;
+				 z-index:99
+			} */
+			.sid{
+				display:block;
 			}
 		</style>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=xoKsurOO9lwXDwRt57TMef0A4eZ5m2ir">
@@ -35,11 +56,14 @@
 	</head>
 
 	<body>
-		<div id="container"></div>
+		<div id="container" style="border:1px red solid">
+		
+		</div>
+
 		<c:forEach items="${info }" var="i">
-			<div  style="display:hidden" class="sid" id="${i.sid}">
-				<div class="layui-form" style="display:hidden">
-					<table style="display:hidden" class="layui-table">
+			<div class="sid">
+				<div class="layui-form" style="display:inherit">
+					<table style="display:inherit" class="layui-table">
 						<colgroup>
 							<col width="120"/>
 							<col />
@@ -79,13 +103,13 @@
 								<td align="center" colspan="2">
 									<a href="javascript:openDetatil(${i.sid})" class="layui-btn layui-btn-normal layui-btn-sm">查看详情</a>
 								</td>
-								
 							</tr>
 						</tbody>
 					</table>
 					
 				</div>
 			</div>
+			
 		</c:forEach>
 		<input type="hidden" id="infos" value="${info}">
 		
@@ -103,7 +127,8 @@
 			
 			var longtitude=[];
 			var latitude = [];
-			var sid = [];
+			var esid = [];
+			var usid =[];
 			var loca =[];
 			var markPoints = [];
 			var slevel = [];
@@ -112,17 +137,21 @@
 				latitude.push(${i.latitude});
 				loca.push("${i.location}");
 				slevel.push(Math.floor(${i.slevel}));
-				/* markPoints.push(
-	            		{
-	            			y:${i.longtitude},
-	            			x:${i.latitude},
-	            			title:"${i.location}",
-	            			con:sids[${status.count}],
-	            			branch:${status.count}
-	            		});	 */
-				
-       	 </c:forEach>
+				usid.push("${i.sid}")
+       	 	</c:forEach>
 			
+		 var arr = [];
+		 var jsonstr = {};
+			<c:forEach items="${pcc}" var="p">
+				 var subArr = [];
+				<c:forEach items="${p.areas}" var="a" varStatus="status">
+					subArr.push("${a}");
+				</c:forEach>
+				arr.push([${p.did},"${p.dname}",subArr]);
+				jsonstr[${p.did}] = subArr;
+			</c:forEach> 
+			alert(JSON.stringify(jsonstr));
+			/* alert(usid); */
 			var sids = document.getElementsByClassName("sid");
 		
              for(var i=0;i<sids.length;i++)
@@ -136,18 +165,22 @@
             			branch:slevel[i]
             		}		
             	)
-            } 
-         /*    alert(JSON.stringify(markPoints)); */
-             var marker = new BMap.Marker(point);
+          /*   	alert(JSON.stringify(sids[i])); */
+            }
+          
+          /*   alert(JSON.stringify(markPoints));  */
+            var marker = new BMap.Marker(point);
             map.addOverlay(marker);
             function markFun(points,label,icon,infoWindows){
             	var markers = new BMap.Marker(points,{icon:myIcon});
             	map.addOverlay(markers);
             	markers.setLabel(label);
+            	
             	markers.addEventListener("click",function(event){
             		map.openInfoWindow(infoWindows,points);
             	})
             }
+            
            var j =0;
 			for( ;j<markPoints.length;j++)
 			{
@@ -214,12 +247,83 @@
 							success:function(){
 								 layer.tips('按x返回', '.layui-layer-setwin .layui-layer-close',{tips:1});
 							}
-						})
+						});
 						layer.full(index);
 					}).resize();
 					
 				})
-			}
+			};
+			
+			 function DivControl() {
+	 				this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+	 				this.defaultOffset = new BMap.Size(10, 10);
+	 			}
+	 			DivControl.prototype = new BMap.Control();
+	 			DivControl.prototype.initialize = function(map) {
+	 				var div = document.createElement("div");
+	 				/*	div.appendChild(document.createTextNode("这是自定义控件"));*/
+	 				var tb = "";
+	 			
+	 				for(var i=0;i<arr.length;i++)
+	 				{
+	 					var co = JSON.stringify(markPoints[i].con);
+	 				
+	 					
+	 					tb += "<tr><td><a href='javascript:proAcityConn("+arr[i][0]+","+markPoints[i].y+","+markPoints[i].x+","+co
+	 							+")'>"+arr[i][1]+"</a></td></tr>"
+	 				}
+	 				div.innerHTML = "<div class='layui-fluid'><div class='layui-col-md8'><div><table class='layui-table'><thead><tr><th>站点名称</th></tr></thead><tbody>"+tb
+	 				+"</tbody></table></div><div><table class='layui-table'><thead><tr><th>站点名称</th></tr></thead><tbody id='tbd'></tbody></table></div></div></div>";
+					div.style.height="300px";
+					div.style.position="absolute";
+					div.style.marginTop="200px";
+					div.style.marginLeft="1350px"
+					div.style.width="150px";
+					div.style.cursor = "pointer";
+					div.id="pc";
+	 				map.getContainer().appendChild(div);
+	 				return div;
+	 			};
+	 			map.addControl(new DivControl());
+	 		
+	 			function moveToPoint(lgt,lat)
+	 			{
+	 				/* alert(map.getCenter()); */
+	 				map.panTo(new BMap.Point(lgt, lat));
+	 				map.setZoom(15);
+	 				
+	 			};
+	 			
+	 			function proAcityConn(id,lgt,lat,con)
+	 			{
+	 				var pc = $("#tbd");
+	 				var suba = jsonstr[id];
+	 				var su = $(suba);
+	 				pc.html("");
+					su.each(function(){
+						pc.append("<tr><td><a href='#'>"+this+"<a/></td></tr>");
+					})
+					map.panTo(new BMap.Point(lgt, lat));
+					
+	 				map.setZoom(15);
+	 				var opts = {    
+	 					    width : 250,     // 信息窗口宽度    
+	 					    height: 100,     // 信息窗口高度    
+	 					     // 信息窗口标题   
+	 					};    
+	 	 
+	 				var infoWindow = new BMap.InfoWindow("hello world", opts);  // 创建信息窗口对象    
+	 				map.openInfoWindow(infoWindow,new BMap.Point(lgt, lat));  
+	 				/* for(var i=0;i<suba.length;suba++)
+	 				{
+	 					
+	 				} */
+	 				
+	 				
+	 			}
+	 			
+		  
+			
 		
 		</script>
 	</body>

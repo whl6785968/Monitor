@@ -3,11 +3,12 @@
 <mapper namespace="dao.StationMapper" >
   <resultMap id="BaseResultMap" type="model.Station" >
     <id column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="did" property="did" jdbcType="INTEGER" />
     <result column="charge" property="charge" jdbcType="VARCHAR" />
     <result column="location" property="location" jdbcType="VARCHAR" />
-    <result column="slevel" property="slevel" jdbcType="INTEGER" />
     <result column="longtitude" property="longtitude" jdbcType="REAL" />
     <result column="latitude" property="latitude" jdbcType="REAL" />
+    <result column="slevel" property="slevel" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    sid, charge, location, slevel, longtitude, latitude
+    sid, did, charge, location, longtitude, latitude, slevel
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="model.StationExample" >
     select
@@ -101,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="model.Station" >
-    insert into station (sid, charge, location, 
-      slevel, longtitude, latitude
-      )
-    values (#{sid,jdbcType=VARCHAR}, #{charge,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
-      #{slevel,jdbcType=INTEGER}, #{longtitude,jdbcType=REAL}, #{latitude,jdbcType=REAL}
-      )
+    insert into station (sid, did, charge, 
+      location, longtitude, latitude, 
+      slevel)
+    values (#{sid,jdbcType=VARCHAR}, #{did,jdbcType=INTEGER}, #{charge,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{longtitude,jdbcType=REAL}, #{latitude,jdbcType=REAL}, 
+      #{slevel,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="model.Station" >
     insert into station
@@ -114,14 +115,14 @@
       <if test="sid != null" >
         sid,
       </if>
+      <if test="did != null" >
+        did,
+      </if>
       <if test="charge != null" >
         charge,
       </if>
       <if test="location != null" >
         location,
-      </if>
-      <if test="slevel != null" >
-        slevel,
       </if>
       <if test="longtitude != null" >
         longtitude,
@@ -129,10 +130,16 @@
       <if test="latitude != null" >
         latitude,
       </if>
+      <if test="slevel != null" >
+        slevel,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="sid != null" >
         #{sid,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
       </if>
       <if test="charge != null" >
         #{charge,jdbcType=VARCHAR},
@@ -140,14 +147,14 @@
       <if test="location != null" >
         #{location,jdbcType=VARCHAR},
       </if>
-      <if test="slevel != null" >
-        #{slevel,jdbcType=INTEGER},
-      </if>
       <if test="longtitude != null" >
         #{longtitude,jdbcType=REAL},
       </if>
       <if test="latitude != null" >
         #{latitude,jdbcType=REAL},
+      </if>
+      <if test="slevel != null" >
+        #{slevel,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -163,20 +170,23 @@
       <if test="record.sid != null" >
         sid = #{record.sid,jdbcType=VARCHAR},
       </if>
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
       <if test="record.charge != null" >
         charge = #{record.charge,jdbcType=VARCHAR},
       </if>
       <if test="record.location != null" >
         location = #{record.location,jdbcType=VARCHAR},
       </if>
-      <if test="record.slevel != null" >
-        slevel = #{record.slevel,jdbcType=INTEGER},
-      </if>
       <if test="record.longtitude != null" >
         longtitude = #{record.longtitude,jdbcType=REAL},
       </if>
       <if test="record.latitude != null" >
         latitude = #{record.latitude,jdbcType=REAL},
+      </if>
+      <if test="record.slevel != null" >
+        slevel = #{record.slevel,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -186,11 +196,12 @@
   <update id="updateByExample" parameterType="map" >
     update station
     set sid = #{record.sid,jdbcType=VARCHAR},
+      did = #{record.did,jdbcType=INTEGER},
       charge = #{record.charge,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
-      slevel = #{record.slevel,jdbcType=INTEGER},
       longtitude = #{record.longtitude,jdbcType=REAL},
-      latitude = #{record.latitude,jdbcType=REAL}
+      latitude = #{record.latitude,jdbcType=REAL},
+      slevel = #{record.slevel,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,14 +209,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="model.Station" >
     update station
     <set >
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
       <if test="charge != null" >
         charge = #{charge,jdbcType=VARCHAR},
       </if>
       <if test="location != null" >
         location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="slevel != null" >
-        slevel = #{slevel,jdbcType=INTEGER},
       </if>
       <if test="longtitude != null" >
         longtitude = #{longtitude,jdbcType=REAL},
@@ -213,16 +224,20 @@
       <if test="latitude != null" >
         latitude = #{latitude,jdbcType=REAL},
       </if>
+      <if test="slevel != null" >
+        slevel = #{slevel,jdbcType=INTEGER},
+      </if>
     </set>
     where sid = #{sid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="model.Station" >
     update station
-    set charge = #{charge,jdbcType=VARCHAR},
+    set did = #{did,jdbcType=INTEGER},
+      charge = #{charge,jdbcType=VARCHAR},
       location = #{location,jdbcType=VARCHAR},
-      slevel = #{slevel,jdbcType=INTEGER},
       longtitude = #{longtitude,jdbcType=REAL},
-      latitude = #{latitude,jdbcType=REAL}
+      latitude = #{latitude,jdbcType=REAL},
+      slevel = #{slevel,jdbcType=INTEGER}
     where sid = #{sid,jdbcType=VARCHAR}
   </update>
 </mapper>

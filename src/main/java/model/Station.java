@@ -3,15 +3,17 @@ package model;
 public class Station {
     private String sid;
 
+    private Integer did;
+
     private String charge;
 
     private String location;
 
-    private Integer slevel;
-
     private Float longtitude;
 
     private Float latitude;
+
+    private Integer slevel;
 
     public String getSid() {
         return sid;
@@ -19,6 +21,14 @@ public class Station {
 
     public void setSid(String sid) {
         this.sid = sid == null ? null : sid.trim();
+    }
+
+    public Integer getDid() {
+        return did;
+    }
+
+    public void setDid(Integer did) {
+        this.did = did;
     }
 
     public String getCharge() {
@@ -37,14 +47,6 @@ public class Station {
         this.location = location == null ? null : location.trim();
     }
 
-    public Integer getSlevel() {
-        return slevel;
-    }
-
-    public void setSlevel(Integer slevel) {
-        this.slevel = slevel;
-    }
-
     public Float getLongtitude() {
         return longtitude;
     }
@@ -59,5 +61,13 @@ public class Station {
 
     public void setLatitude(Float latitude) {
         this.latitude = latitude;
+    }
+
+    public Integer getSlevel() {
+        return slevel;
+    }
+
+    public void setSlevel(Integer slevel) {
+        this.slevel = slevel;
     }
 }

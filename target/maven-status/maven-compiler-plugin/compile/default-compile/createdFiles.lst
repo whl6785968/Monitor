@@ -16,6 +16,7 @@ com\sandalen\CF\GetSimilarity$12.class
 model\MuserExample$Criteria.class
 service\impl\MproductServiceImpl.class
 model\User.class
+dao\DistrictMapper.class
 com\sandalen\CF\GetRecommend$4.class
 service\impl\MapServiceImpl.class
 model\UserrecordExample$Criteria.class
@@ -37,6 +38,7 @@ com\sandalen\CF\GetSimilarity$13.class
 com\sandalen\CF\GetSimilarity$9.class
 dao\IndexosMapper.class
 model\StationExample$Criteria.class
+model\DistrictExample$GeneratedCriteria.class
 dao\BoardManagerMapper.class
 dao\MuserMapper.class
 model\EquipmentExample$GeneratedCriteria.class
@@ -53,6 +55,7 @@ model\Mproduct.class
 model\UserrecordExample$GeneratedCriteria.class
 util\EncodingUtil.class
 com\sandalen\CF\GetCommoUse$3.class
+model\DistrictExample.class
 model\Data.class
 model\StationExample$GeneratedCriteria.class
 com\sandalen\CF\GetRecommend$2.class
@@ -64,6 +67,7 @@ dao\LoginLogMapper.class
 model\TestData.class
 service\impl\SearchItemServiceImpl.class
 model\EquipmentExample$Criteria.class
+model\ProCityConnect.class
 service\TopicService.class
 model\LoginLog.class
 controller\DataAndChartController$SqlQuery.class
@@ -85,6 +89,7 @@ com\sandalen\CF\UserData.class
 service\impl\EquipmentServiceImpl.class
 service\PageService.class
 com\sandalen\CF\GetCommoUse.class
+model\DistrictExample$Criterion.class
 model\IndexosExample.class
 model\DtExample$Criteria.class
 com\sandalen\CF\GetSimilarity$5.class
@@ -106,6 +111,7 @@ service\impl\UserRecordServiceImpl.class
 com\sandalen\CF\GetSimilarity$6.class
 model\EquipmentExample$Criterion.class
 service\UserService.class
+model\DistrictExample$Criteria.class
 model\IndexosExample$Criteria.class
 controller\MainController.class
 com\sandalen\CF\GetSimilarity$10.class
@@ -116,6 +122,7 @@ controller\MproductController.class
 model\EquipmentExample.class
 service\MuserService.class
 controller\DataAndChartController.class
+model\District.class
 service\impl\TopicServiceImpl.class
 dao\SearchDao.class
 model\Board.class
