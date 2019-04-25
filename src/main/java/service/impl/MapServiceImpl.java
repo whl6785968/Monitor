@@ -10,6 +10,7 @@ import dao.StationMapper;
 import model.District;
 import model.DistrictExample;
 import model.ProCityConnect;
+import model.ProCityConnect2;
 import model.Station;
 import model.StationExample;
 import service.MapService;
@@ -38,5 +39,13 @@ public class MapServiceImpl implements MapService{
 		List<ProCityConnect> allPCC = dm.selectAllPCC();
 		return allPCC;
 	}
+	@Override
+	public List<ProCityConnect2> getPcc() {
+		// TODO Auto-generated method stub
+		List<ProCityConnect2> aPcc = dm.getAPcc();
+		return aPcc;
+	}
+	
+	
 
 }

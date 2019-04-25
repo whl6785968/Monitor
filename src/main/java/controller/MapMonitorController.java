@@ -14,6 +14,7 @@ import model.Indexos;
 import model.IndexosExample;
 import model.IndexosExample.Criteria;
 import model.ProCityConnect;
+import model.ProCityConnect2;
 import model.Station;
 import model.StationExample;
 import service.IndexosService;
@@ -55,17 +56,16 @@ public class MapMonitorController {
 			allPcc.add(proCityConnect);
 			
 		}
-		
-		for(ProCityConnect pcc : allPcc)
-		{
-			System.out.println(pcc.getDname()+":"+pcc.getDid()+":"+pcc.getAreas().toString());
-		}
 		model.addAttribute("pcc", allPcc);
-		/*List<ProCityConnect> allPCC = ms.getAllPCC();
-		for(ProCityConnect pcc : allPCC)
+		
+		List<ProCityConnect2> apcc = ms.getPcc();
+		for(ProCityConnect2 p: apcc)
 		{
-			System.out.println(pcc.getDid()+":"+pcc.getDname()+":"+pcc.getAreas());
-		}*/
+			for(Station s : p.getAreas())
+			{
+				System.out.println(s.getLocation());
+			}
+		}
 		return "stationMonitor";
 	}
 	

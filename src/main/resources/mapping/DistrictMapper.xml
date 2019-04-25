@@ -125,8 +125,31 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <resultMap type="model.ProCityConnect" id="pccMap">
+  	<id property="did" column="did" />
+  	<result property="dname" column="dname"/>
+ 	<collection property="areas" ofType="java.lang.String">
+              
+    </collection>
+  </resultMap>
+  <resultMap type="model.ProCityConnect2" id="pccMap1">
+  	<id property="did" column="did" />
+  	<result property="dname" column="dname"/>
+  	<collection property="areas" ofType="model.Station">
+      <id property="sid" column="sid"/>
+      <result property="did" column="did"></result>
+      <result property="charge" column="charge"/>       
+      <result property="location" column="location"/> 
+      <result property="longtitude" column="longtitude"/> 
+      <result property="latitude" column="latitude"/> 
+      <result property="slevel" column="slevel"/> 
+    </collection>
+  </resultMap>
   <select id="selectAllPCC" resultType="model.ProCityConnect">
   	select d.did,dname,location from station s,district d where s.did = d.did ;
+  </select>
+  <select id="getAPcc" resultMap="pccMap1">
+  	select * from station s,district d where s.did = d.did;
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update district

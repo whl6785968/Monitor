@@ -269,16 +269,17 @@
 	 					var co = JSON.stringify(markPoints[i].con);
 	 				
 	 					
-	 					tb += "<tr><td><a href='javascript:proAcityConn("+arr[i][0]+","+markPoints[i].y+","+markPoints[i].x+","+co
+	 					tb += "<tr><td align='center'><a href='javascript:proAcityConn("+arr[i][0]+","+markPoints[i].y+","+markPoints[i].x+","+co
 	 							+")'>"+arr[i][1]+"</a></td></tr>"
 	 				}
-	 				div.innerHTML = "<div class='layui-fluid'><div class='layui-col-md8'><div><table class='layui-table'><thead><tr><th>站点名称</th></tr></thead><tbody>"+tb
-	 				+"</tbody></table></div><div><table class='layui-table'><thead><tr><th>站点名称</th></tr></thead><tbody id='tbd'></tbody></table></div></div></div>";
+	 				div.innerHTML = "<div style='border:1px red solid;width:200px;float:left;'><table class='layui-table'><thead><tr><th style='text-align:center'>站点名称</th></tr></thead><tbody>"+tb
+	 				+"</tbody></table></div><div style='border:1px red solid;width:200px;float:left'><table class='layui-table'><thead><tr><th style='text-align:center'>站点名称</th></tr></thead><tbody id='tbd'></tbody></table></div>";
 					div.style.height="300px";
 					div.style.position="absolute";
 					div.style.marginTop="200px";
 					div.style.marginLeft="1350px"
-					div.style.width="150px";
+					div.style.width="500px";
+					div.style.border="1px red solid";
 					div.style.cursor = "pointer";
 					div.id="pc";
 	 				map.getContainer().appendChild(div);
@@ -301,7 +302,7 @@
 	 				var su = $(suba);
 	 				pc.html("");
 					su.each(function(){
-						pc.append("<tr><td><a href='#'>"+this+"<a/></td></tr>");
+						pc.append("<tr><td align='center'><a href='#'>"+this+"<a/></td></tr>");
 					})
 					map.panTo(new BMap.Point(lgt, lat));
 					

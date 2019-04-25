@@ -4,6 +4,7 @@ import java.util.List;
 import model.District;
 import model.DistrictExample;
 import model.ProCityConnect;
+import model.ProCityConnect2;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -31,4 +32,6 @@ public interface DistrictMapper {
     int updateByPrimaryKey(District record);
     
     List<ProCityConnect> selectAllPCC();
+    
+    List<ProCityConnect2> getAPcc();
 }

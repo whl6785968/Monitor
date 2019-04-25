@@ -63,6 +63,7 @@ service\MproductService.class
 controller\DataScrollController$tThread.class
 model\MproductExample.class
 model\Indexos.class
+model\ProCityConnect2.class
 dao\LoginLogMapper.class
 model\TestData.class
 service\impl\SearchItemServiceImpl.class
