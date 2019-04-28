@@ -52,10 +52,12 @@ C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\TopicService.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\util\JsonUtils.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\UserDetailedMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\UserServiceImpl.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\controller\BackManageController.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\Station.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\UserRecordService.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\ResultMap.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\service\impl\TopicServiceImpl.java
+C:\Users\dell\eclipse-workspace\Monitor\src\main\java\model\TaotaoResult.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\SearchDao.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\UserMapper.java
 C:\Users\dell\eclipse-workspace\Monitor\src\main\java\dao\DtMapper.java

@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,41 @@ public class MapServiceImpl implements MapService{
 		// TODO Auto-generated method stub
 		List<ProCityConnect2> aPcc = dm.getAPcc();
 		return aPcc;
+	}
+	@Override
+	public int insertStation(Station station) {
+		// TODO Auto-generated method stub
+		int i = sm.insert(station);
+		return i;
+	}
+	@Override
+	public List<Station> getStationByPage(HashMap<String, Integer> map) {
+		// TODO Auto-generated method stub
+		List<Station> list = sm.getStationByPage(map);
+		return list;
+	}
+	@Override
+	public Integer getCount(StationExample example) {
+		// TODO Auto-generated method stub
+		int i = sm.countByExample(example);
+		return i;
+	}
+	@Override
+	public Station getStationBySid(String sid) {
+		// TODO Auto-generated method stub
+		Station station = sm.selectByPrimaryKey(sid);
+		return station;
+	}
+	@Override
+	public void updataStation(Station station) {
+		// TODO Auto-generated method stub
+		sm.updateByPrimaryKey(station);
+	}
+	@Override
+	public void deleteStation(String sid) {
+		// TODO Auto-generated method stub
+		sm.deleteByPrimaryKey(sid);
+		
 	}
 	
 	

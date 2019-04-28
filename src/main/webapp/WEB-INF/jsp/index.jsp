@@ -177,6 +177,11 @@
 									data-url="/dataScroll" class="site-demo-active"
 									data-type="tabAdd">滚动数据监控</a>
 							</dd>
+							<dd>
+								<a href="#" data-id="9" data-title="Map"
+									data-url="/stationMonitor" class="site-demo-active"
+									data-type="tabAdd">站点监控</a>
+							</dd>
 						</dl></li>
 					<c:if test="${user.userType==2}">
 						<li class="layui-nav-item"><a href="javascript:;">管理操作</a>
@@ -187,10 +192,11 @@
 										data-url="/showControlAuth" class="site-demo-active"
 										data-type="tabAdd">用户设置</a>
 								</dd>
+							
 								<dd>
-									<a href="#" data-id="9" data-title="Map"
-										data-url="/stationMonitor" class="site-demo-active"
-										data-type="tabAdd">站点监控</a>
+									<a href="#" data-id="10" data-title="Map"
+										data-url="/backManage" class="site-demo-active"
+										data-type="tabAdd">后台管理</a>
 								</dd>
 					
 							</dl></li>

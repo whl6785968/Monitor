@@ -20,6 +20,7 @@ dao\DistrictMapper.class
 com\sandalen\CF\GetRecommend$4.class
 service\impl\MapServiceImpl.class
 model\UserrecordExample$Criteria.class
+model\TaotaoResult.class
 service\EquipmentService.class
 model\ResultMap.class
 util\CookieUtils.class
@@ -96,6 +97,7 @@ model\DtExample$Criteria.class
 com\sandalen\CF\GetSimilarity$5.class
 service\impl\EquipmentServiceImpl$2.class
 model\Post.class
+controller\BackManageController.class
 model\UserrecordExample.class
 com\sandalen\redis\JedisClient.class
 model\Dt.class

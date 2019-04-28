@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import model.Station;
 import model.StationExample;
@@ -27,4 +28,6 @@ public interface StationMapper {
     int updateByPrimaryKeySelective(Station record);
 
     int updateByPrimaryKey(Station record);
+    
+    List<Station> getStationByPage(HashMap<String, Integer> map);
 }

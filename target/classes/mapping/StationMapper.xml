@@ -164,6 +164,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <select id="getStationByPage" parameterType="HashMap"  resultType="model.Station">
+  	select * from station 
+		<if test="did!= null" >
+      		where did = #{did},
+    	</if>
+  	limit #{start},#{end};
+  	
+  </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update station
     <set >

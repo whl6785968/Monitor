@@ -1,12 +1,16 @@
 package controller;
 
 import java.util.ArrayList;
+
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.District;
 import model.DistrictExample;
@@ -84,4 +88,29 @@ public class MapMonitorController {
 	}
 	
 	
+	
+	@ResponseBody
+	@RequestMapping("/getStationData")
+	public HashMap<Object,Object> getStationData(@RequestParam(required=false,defaultValue="1")Integer page,Integer rows,Integer dist)
+	{
+		System.out.println("dist is"+ dist);
+		StationExample example = new StationExample();
+		HashMap<String,Integer> map = new HashMap<>();
+		map.put("start", (page-1)*rows);
+		map.put("end",rows);
+		map.put("did", dist);
+		Integer count = ms.getCount(example);
+		List<Station> list2 = ms.getStationByPage(map);
+		
+		
+		for(Station s : list2)
+		{
+			System.out.println(s.getLocation());
+		}
+		
+		HashMap<Object,Object> map2 = new HashMap<>();
+		map2.put("total", count);
+		map2.put("rows", list2);
+		return map2;
+	}
 }
