@@ -53,7 +53,7 @@ public class MapServiceImpl implements MapService{
 		return i;
 	}
 	@Override
-	public List<Station> getStationByPage(HashMap<String, Integer> map) {
+	public List<Station> getStationByPage(HashMap<String,Object> map) {
 		// TODO Auto-generated method stub
 		List<Station> list = sm.getStationByPage(map);
 		return list;

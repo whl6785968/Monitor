@@ -75,6 +75,37 @@
   <sql id="Base_Column_List" >
     iid, itime, tss, cod, tn, tp, dissolve, ph, temper, nhn, conductivity
   </sql>
+  <select id="getDetailDataByCond" parameterType="HashMap" resultType="model.Indexos">
+  	select * from indexos where 1=1
+  	<if test="from != null">
+  		and itime &gt;= #{from}
+  	</if> 
+  	<if test="to !=null">
+  		and itime &lt;= #{to}
+  	</if>
+  	
+  	<if test="op !=null">
+  		<if test="op == 1">
+  			and to_days(itime) = to_days(now())
+  		</if>
+  		<if test="op == 2">
+  			and TO_DAYS(now()) - TO_DAYS(itime) &lt;= 1
+  		</if>
+  		<if test="op == 3">
+  			and DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(itime)
+  		</if>
+  		<if test="op == 4">
+  			and DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= date(itime)
+  		</if>
+  		<if test="op == 5">
+  			and YEARWEEK(date_format(itime,&apos;%Y-%m-%d&apos;)) = YEARWEEK(now())
+  		</if>
+  		<if test="op == 6">
+  			and YEARWEEK(date_format(itime,&apos;%Y-%m-%d&apos;)) = YEARWEEK(now())-1
+  		</if>
+  	</if>
+  	limit #{start},#{end};
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="model.IndexosExample" >
     select
     <if test="distinct" >

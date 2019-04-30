@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import model.Station;
 import model.StationExample;
 import service.IndexosService;
 import service.MapService;
+import util.EncodingUtil;
 
 @Controller
 public class MapMonitorController {
@@ -91,14 +93,37 @@ public class MapMonitorController {
 	
 	@ResponseBody
 	@RequestMapping("/getStationData")
-	public HashMap<Object,Object> getStationData(@RequestParam(required=false,defaultValue="1")Integer page,Integer rows,Integer dist)
+	public HashMap<Object,Object> getStationData(@RequestParam(required=false,defaultValue="1")Integer page,Integer rows,Integer dist,
+			String cge,Integer quality) throws Exception
 	{
-		System.out.println("dist is"+ dist);
+		System.out.println("cge is"+ cge);
+		System.out.println("quality is"+quality);
 		StationExample example = new StationExample();
-		HashMap<String,Integer> map = new HashMap<>();
+		model.StationExample.Criteria criteria = example.createCriteria();
+		HashMap<String,Object> map = new HashMap<>();
 		map.put("start", (page-1)*rows);
 		map.put("end",rows);
-		map.put("did", dist);
+		if(dist !=null)
+		{
+			if(dist!=0)
+			{
+				map.put("did", dist);
+				criteria.andDidEqualTo(dist);
+			}
+		}
+		if(cge !=null && cge != "")
+		{
+			cge = EncodingUtil.encoding(cge);
+			map.put("charge", cge);
+			criteria.andChargeEqualTo(cge);
+		}
+		if(quality!=null&&quality!=0)
+		{
+			map.put("slevel", quality);
+			criteria.andSlevelEqualTo(quality);
+		}
+		
+		
 		Integer count = ms.getCount(example);
 		List<Station> list2 = ms.getStationByPage(map);
 		

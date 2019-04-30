@@ -16,7 +16,7 @@ public interface MapService {
 	List<ProCityConnect> getAllPCC();
 	List<ProCityConnect2> getPcc();
 	int insertStation(Station station);
-	List<Station> getStationByPage(HashMap<String,Integer> map);
+	List<Station> getStationByPage(HashMap<String,Object> map);
 	Integer getCount(StationExample example);
 	Station getStationBySid(String sid);
 	void updataStation(Station station);

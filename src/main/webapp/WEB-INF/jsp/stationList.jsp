@@ -44,14 +44,23 @@
 		</div>
 		<div>
 		
-			Date From: <input class="easyui-datebox" style="width: 80px">
-			To: <input class="easyui-datebox" style="width: 80px">
+			<!-- Date From: <input class="easyui-datebox" style="width: 80px">
+			To: <input class="easyui-datebox" style="width: 80px"> -->
+			Charge:<input id="cge" class="easyui-textbox" style="width:100px;height:32px">
 			District: <select id="dist" class="easyui-combobox" panelHeight="auto" style="width: 100px">
+				<option value="0">--显示全部--</option>
 				<option value="1">玄武区</option>
 				<option value="2">句容市</option>
 				<option value="3">江宁区</option>
 				<option value="4">秦淮区</option>
-			</select> 
+			</select>
+			Quality: <select id="quality" class="easyui-combobox" panelHeight="auto" style="width: 100px">
+				<option value="0">--显示全部--</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>  
 			<a href="javascript:search()" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 		</div>
 	</div>
@@ -168,6 +177,8 @@
 	{
 		$('#dg').datagrid('load',{
 			dist: $('#dist').val(),
+			cge:$('#cge').val(),
+			quality:$('#quality').val()
 			
 		});
 	}

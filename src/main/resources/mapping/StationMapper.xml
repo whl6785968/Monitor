@@ -165,9 +165,15 @@
     </if>
   </select>
   <select id="getStationByPage" parameterType="HashMap"  resultType="model.Station">
-  	select * from station 
+  	select * from station where 1=1
 		<if test="did!= null" >
-      		where did = #{did},
+      		and did = #{did}
+    	</if>
+    	<if test="slevel!=null">
+    		and slevel = #{slevel}
+    	</if>
+    	<if test="charge!=null">
+    		and charge like '%${charge}%'
     	</if>
   	limit #{start},#{end};
   	

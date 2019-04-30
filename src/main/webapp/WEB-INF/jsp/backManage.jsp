@@ -20,7 +20,7 @@
 		<div data-options="region:'east',split:true" title="East" style="width:300px;">
 		
 		</div>
-		<div data-options="region:'west',split:true" title="West" style="width:300px;">
+		<div data-options="region:'west',split:true" title="Sandalen后台管理系统" style="width:300px;">
 				<div class="easyui-panel" style="padding:5px">
 				<ul id="tree">
 					<!-- <li>
@@ -57,7 +57,7 @@
 				</ul>
 			</div>
 		</div>
-		<div id="center" data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+		<div id="center" data-options="region:'center',title:'Sandalen后台管理系统',iconCls:'icon-ok'">
 			<div class="easyui-tabs" fit="true" border="false" id="tabs">
 	    	   <div title="首页"><h3>欢迎使用Sandalen后台管理系统</h3>
 	    	   		<!-- <table id="pg" class="easyui-propertygrid" style="width:300px" data-options="
@@ -75,8 +75,9 @@
 							<li>联系方式:806403789@qq.com</li>
 							<li>项目名称:Sandalen水质管理系统</li>
 							<li>项目版本:v1.0</li>
-							<li>更新事件:2019.4.28</li>
+							<li>更新时间:2019.4.28</li>
 						</ul>
+						 <a href="#" class="easyui-linkbutton">获取授权</a>
 					</div>
 	    	</div>
 			
@@ -114,7 +115,7 @@
 	                      	{
 	                          text : "数据查询",
 	                          attributes : {
-	                              url : ''
+	                              url : '<iframe width="100%" height="100%" frameborder="0"  src="/showStaionDetailPage" style="width:100%;height:100%;margin:0px 0px;"></iframe>'
 	 
 	                          }
 	                      }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import model.Indexos;
 import model.IndexosExample;
@@ -19,4 +20,6 @@ public interface IndexosMapper {
     int updateByExampleSelective(@Param("record") Indexos record, @Param("example") IndexosExample example);
 
     int updateByExample(@Param("record") Indexos record, @Param("example") IndexosExample example);
+    
+    List<Indexos> getDetailDataByCond(HashMap<String,Object> map);
 }

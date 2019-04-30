@@ -29,5 +29,5 @@ public interface StationMapper {
 
     int updateByPrimaryKey(Station record);
     
-    List<Station> getStationByPage(HashMap<String, Integer> map);
+    List<Station> getStationByPage(HashMap<String,Object> map);
 }
