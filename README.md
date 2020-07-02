@@ -23,3 +23,4 @@
 ![image](https://github.com/whl6785968/Monitor/blob/master/layuiPic/backStage2.png)
 ![image](https://github.com/whl6785968/Monitor/blob/master/layuiPic/backStage3.png)
 
+## 该系统其实还基于lucenne实现了全文检索功能和动态图表展示功能，由于很多服务部署在linux上，启动有点麻烦，在此不进行展示。此外，布局基本十分丑陋（太懒了），请有缘人不要效仿，希望有值得被人学习的地方LOL
