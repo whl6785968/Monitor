@@ -1,6 +1,7 @@
 # Monitor
 一个基于layui和easyui的小系统练习
 ## 1.首页
+
 ![image](https://github.com/whl6785968/Monitor/tree/master/layuiPic/index.png)
 ## 2.用户管理界面
 ![image](https://github.com/whl6785968/Monitor/tree/master/layuiPic/userMana.png)
